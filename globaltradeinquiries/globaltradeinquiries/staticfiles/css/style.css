@@ -1,0 +1,36 @@
+/* Add your global styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* Navigation */
+header nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+    background: #007BFF;
+    color: white;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+header nav ul li {
+    list-style: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../assets/images/hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
