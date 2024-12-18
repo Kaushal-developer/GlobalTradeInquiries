@@ -701,10 +701,10 @@
             <!-- Product Images Slider -->
             <section id="products-slider">
                 <h2 class="title text-xl font-bold mb-2" style="color: #007bff;">
-                    <span id="openModal" class="flex items-center justify-center gap-3">
+                    <a href="/product-filter" class="flex items-center justify-center gap-3">
                         <img src="{% static 'img/explore_more.webp' %}" alt="Explore More" class="w-8 h-8">
                         <span class="text-lg font-semibold">Explore Our Products</span>
-                    </span>
+                    </a>
                     
                 </h2>
                 <div class="infinity-slider relative overflow-hidden">
@@ -1084,8 +1084,6 @@
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    >
-    
 
 
     <!-- Footer -->
@@ -1098,48 +1096,7 @@
     </footer>
     <!-- Offer Section -->
 
-    <div id="productModal" class="w-full fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center hidden z-50">
-        <div class="bg-white rounded-lg shadow-lg w-full h-full p-8 overflow-y-auto animate__animated animate__fadeInDown relative">
-            
-            <!-- Close Button -->
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-700 text-3xl font-bold hover:text-gray-900 transition">
-                &times;
-            </button>
-    
-            <!-- Modal Title -->
-            <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">Explore Our Products</h1>
-    
-            <!-- Filter Section -->
-            <div class="mb-6 flex items-center space-x-4">
-                <div class="flex-1 items-right">
-                    <select id="categoryFilter" class="border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-300 py-2 px-4">
-                        <option value="">All Categories</option>
-                        {% for category in categories %}
-                            <option value="{{ category.id }}">{{ category.name }}</option>
-                        {% endfor %}
-                    </select>
-                    <button id="applyFilter" class="bg-blue-500 text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105">
-                        Apply
-                    </button>
-                </div>
-    
-               
-            </div>
-    
-            <!-- Product Grid -->
-            <div id="modalContent" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-4">
-                <!-- Products dynamically loaded here -->
-            </div>
-    
-            <!-- Pagination -->
-            <div id="pagination" class="mt-8 flex justify-center items-center space-x-4">
-                <!-- Pagination links dynamically added -->
-            </div>
-    
-        </div>
-    </div>
-    
-    
+
     <!-- Countdown Script -->
     <script>
         function updateCountdown(endTime, elementId) {

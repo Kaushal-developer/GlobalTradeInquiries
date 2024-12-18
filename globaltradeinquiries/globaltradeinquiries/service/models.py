@@ -87,10 +87,8 @@ class Offer(models.Model):
             return str(self.end_time - timezone.now()).split()[0]
         return "Expired"
 
-from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from django.utils import timezone
 
 # Model to represent the Contact Us form / Lead Generation inquiries
 class Lead(models.Model):
