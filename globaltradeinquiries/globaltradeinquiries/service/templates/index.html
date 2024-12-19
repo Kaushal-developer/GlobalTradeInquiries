@@ -11,7 +11,7 @@
     </title>
     <link rel="icon" href="{% static 'img/exportbiz.webp'%}" type="image/x-icon">
     <style>
-          html {
+        html {
             font-size: 16px;
             /* Sets the base font size to 16px, which can be scaled using rem */
         }
@@ -65,7 +65,7 @@
             border: 3px solid #000;
             /* Optional: Add a border */
         }
-        
+
         h1 {
             font-size: 4rem;
             font-weight: bold;
@@ -147,7 +147,27 @@
         /* Div styles */
         .overlay-text {
             position: absolute;
-            top: 65%;
+            top: 45%;
+            /* Center vertically */
+            left: 50%;
+            /* Center horizontally */
+            color: white;
+            /* Text color */
+            font-size: 20px;
+            /* Adjust font size */
+            font-weight: bold;
+            /* Make it stand out */
+            padding: 5px;
+            /* Add spacing around text */
+            border-radius: 8px;
+            /* Optional: rounded corners */
+            text-align: center;
+            transform: translate(-50%, -50%);
+            /* Perfect centering */
+        }
+        .overlay-text-statics {
+            position: absolute;
+            top: 70%;
             /* Center vertically */
             left: 50%;
             /* Center horizontally */
@@ -194,6 +214,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 50px;
         }
 
         /* Individual Stat Item */
@@ -201,7 +222,7 @@
             background: #ffffff;
             border-radius: 12px;
             padding: 15px 10px;
-            width: 150px;
+            width: 200px;
             height: auto;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -594,7 +615,6 @@
                 opacity: 1;
             }
         }
-
     </style>
     <script src="https://cdn.tailwindcss.com">
     </script>
@@ -651,36 +671,35 @@
                 {% endfor %}
             </div>
             <div class="overlay-text">
-
-                <h1 class="title text-2xl font-bold mb-2" style="color: #007bff;">
-                    Welcome to ExportBiz
-                </h1>
-                <p class="subtitle text-xl mb-3" style="color: #003366;">
-                    Your trusted partner in global trade and logistics.
-                    Delivering excellence across continents with a commitment to quality and trust.
-                </p>
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <div class="icon-container">
-                            <i class="fas fa-ship"></i>
-                        </div>
-                        <h3>10,000+</h3>
-                        <p>Shipments Completed</p>
+                    <h1 class="title text-4xl font-bold mb-2" style="color: #007bff;">
+                        Welcome to ExportBiz
+                    </h1>
+                    <p class="subtitle text-2xl mb-3" style="color: #070707;">
+                        Your trusted partner in global trade and logistics.
+                        Delivering excellence across continents with a commitment to quality and trust.
+                    </p>
+            </div>
+            <div class="overlay-text-statics stats-container">
+                <div class="stat-item">
+                    <div class="icon-container">
+                        <i class="fas fa-ship"></i>
                     </div>
-                    <div class="stat-item">
-                        <div class="icon-container">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h3>25 Years</h3>
-                        <p>Industry Experience</p>
+                    <h3>10,000+</h3>
+                    <p>Shipments Completed</p>
+                </div>
+                <div class="stat-item">
+                    <div class="icon-container">
+                        <i class="fas fa-award"></i>
                     </div>
-                    <div class="stat-item">
-                        <div class="icon-container">
-                            <i class="fas fa-user-check"></i>
-                        </div>
-                        <h3>500+</h3>
-                        <p>Trusted Clients</p>
+                    <h3>25 Years</h3>
+                    <p>Industry Experience</p>
+                </div>
+                <div class="stat-item">
+                    <div class="icon-container">
+                        <i class="fas fa-user-check"></i>
                     </div>
+                    <h3>500+</h3>
+                    <p>Trusted Clients</p>
                 </div>
             </div>
     </section>
@@ -697,19 +716,24 @@
                 Discover a wide range of innovative products and tailored services designed to empower your growth.
                 Our offerings combine cutting-edge technology with customer-focused solutions to meet your unique needs.
             </p>
-    
+
             <!-- Product Images Slider -->
             <section id="products-slider">
-                <h2 class="title text-xl font-bold mb-2" style="color: #007bff;">
-                    <span id="openModal" class="flex items-center justify-center gap-3">
+                <h2 class="title text-xl font-bold mb-2 relative" style="color: #007bff;">
+                    <span id="openModal" class="flex items-center justify-center gap-3 group cursor-pointer">
                         <img src="{% static 'img/explore_more.webp' %}" alt="Explore More" class="w-8 h-8">
                         <span class="text-lg font-semibold">Explore Our Products</span>
+                        <!-- Tooltip -->
+                        <span class="absolute bottom-full mb-2 text-sm bg-gray-800 text-white py-1 px-2 rounded opacity-0 transition-opacity group-hover:opacity-100">
+                            Click here to see more products
+                        </span>
                     </span>
-                    
                 </h2>
+                
+                
                 <div class="infinity-slider relative overflow-hidden">
                     <div class="slider-track flex gap-3 px-2 rtl">
-                        {% for cat in category %}
+                        {% for cat in categories %}
                         <div class="product-card transform transition-transform hover:-translate-y-2 hover:scale-105">
                             <div class="relative overflow-hidden rounded-lg shadow-lg group">
                                 <img class="product-img" style="width: 300px; height: 150px; object-fit: cover;"
@@ -725,13 +749,13 @@
                     </div>
                 </div>
             </section>
-    
+
             <!-- Products and Services Description -->
             <section id="products-description" class="text-left mx-auto max-w-3xl" style="background-color: #2d3748;">
                 <h1 class="title text-2xl font-bold mb-4" style="color: #007bff;">
                     Why Choose Us?
                 </h1>
-    
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <p class="text-white leading-loose">
                         Our product lineup is crafted with precision, leveraging the latest technologies to streamline
@@ -747,7 +771,7 @@
             </section>
         </div>
     </section>
-    
+
 
     <!-- Export Capabilities Section -->
     <section class="py-20" id="export">
@@ -781,46 +805,49 @@
                 <div class="text-left">
                     <h2 class="text-3xl mb-4" style="color: #007bff;">
                         ✨ Why Choose Our Export Services?
-                    </h3>
+                        </h3>
 
-                    <!-- Key Points with Icons -->
-                    <div class="space-y-6">
-                        <div class="flex items-center">
-                            <span class="text-indigo-600 text-4xl mr-4">
-                                📡
-                            </span>
-                            <p><span class="font-bold text-gray-900">Global Reach:</span> A network spanning 100+
-                                countries ensuring delivery across international markets.</p>
+                        <!-- Key Points with Icons -->
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <span class="text-indigo-600 text-4xl mr-4">
+                                    📡
+                                </span>
+                                <p><span class="font-bold text-gray-900">Global Reach:</span> A network spanning 100+
+                                    countries ensuring delivery across international markets.</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-indigo-600 text-4xl mr-4">
+                                    🚚
+                                </span>
+                                <p><span class="font-bold text-gray-900">Efficient Logistics:</span> Timely,
+                                    cost-effective
+                                    transportation and advanced supply chain solutions.</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-indigo-600 text-4xl mr-4">
+                                    🕒
+                                </span>
+                                <p><span class="font-bold text-gray-900">Real-Time Tracking:</span> Integrated tracking
+                                    systems to monitor your shipment’s every move.</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-indigo-600 text-4xl mr-4">
+                                    📜
+                                </span>
+                                <p><span class="font-bold text-gray-900">Customs Expertise:</span> Hassle-free
+                                    documentation
+                                    and customs clearance support.</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-indigo-600 text-4xl mr-4">
+                                    🌱
+                                </span>
+                                <p><span class="font-bold text-gray-900">Sustainability Focus:</span> Eco-friendly
+                                    packaging
+                                    and green logistics practices.</p>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <span class="text-indigo-600 text-4xl mr-4">
-                                🚚
-                            </span>
-                            <p><span class="font-bold text-gray-900">Efficient Logistics:</span> Timely, cost-effective
-                                transportation and advanced supply chain solutions.</p>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-indigo-600 text-4xl mr-4">
-                                🕒
-                            </span>
-                            <p><span class="font-bold text-gray-900">Real-Time Tracking:</span> Integrated tracking
-                                systems to monitor your shipment’s every move.</p>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-indigo-600 text-4xl mr-4">
-                                📜
-                            </span>
-                            <p><span class="font-bold text-gray-900">Customs Expertise:</span> Hassle-free documentation
-                                and customs clearance support.</p>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="text-indigo-600 text-4xl mr-4">
-                                🌱
-                            </span>
-                            <p><span class="font-bold text-gray-900">Sustainability Focus:</span> Eco-friendly packaging
-                                and green logistics practices.</p>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -839,7 +866,7 @@
     <!-- Client Testimonials Section -->
     <section class="py-20" id="testimonials">
         <div class="container mx-auto text-center">
-            <h1 class="title text-4xl font-extrabold mb-12 tracking-tight">
+            <h1 class="title text-4xl font-extrabold mb-12 tracking-tight" style="color: #007bff;">
                 🗣️ What Our Clients Say
             </h1>
 
@@ -848,44 +875,44 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
                 <!-- Client 1 -->
-                <div
-                    class="p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105"  style="background-color: #2d3748;">
+                <div class="p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <div class="mb-4">
                         <img src="https://i.pravatar.cc/150?img=1" alt="Client 1"
-                            class="w-12 h-12 rounded-full mx-auto object-cover border-4 border-indigo-400">
+                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff";>
                     </div>
                     <p class="text-white mb-4 leading-relaxed">
                         "ExportBiz transformed our export operations. Their seamless logistics expertise is
                         unparalleled."
                     </p>
-                    <h3 class="text-xl text-white font-bold mt-2">🌍 Maria spiteri</h3>
+                    <h3 class="text-xl font-bold mt-2" style="color: #007bff">🌍 Maria spiteri</h3>
                 </div>
 
                 <!-- Client 2 -->
-                <div
-                    class="p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105" style="background-color: #2d3748;">
+                <div class="p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <div class="mb-4">
                         <img src="https://i.pravatar.cc/150?img=2" alt="Client 2"
-                            class="w-12 h-12 rounded-full mx-auto object-cover border-4 border-indigo-400">
+                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff">
                     </div>
                     <p class="text-white mb-4 leading-relaxed">
                         "Partnering with ExportBiz has been a reliable experience. Their commitment never wavers."
                     </p>
-                    <h3 class="text-xl  text-white font-bold mt-2">🌐 Victoria Savchenko</h3>
+                    <h3 class="text-xl font-bold mt-2" style="color: #007bff">🌐 Victoria Savchenko</h3>
                 </div>
 
                 <!-- Client 3 -->
-                <div
-                    class="bg-white p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105" style="background-color: #2d3748;">
+                <div class="bg-white p-8 rounded-lg shadow-lg transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <div class="mb-4">
                         <img src="https://i.pravatar.cc/150?img=3" alt="Client 3"
-                            class="w-12 h-12 rounded-full mx-auto object-cover border-4 border-indigo-400">
+                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff"> 
                     </div>
                     <p class="text-white mb-4 leading-relaxed">
                         "Their extensive global network and streamlined processes make ExportBiz our preferred export
                         partner."
                     </p>
-                    <h3 class="text-xl text-white font-bold mt-2">🚛 John Zink</h3>
+                    <h3 class="text-xl font-bold mt-2" style="color: #007bff">🚛 John Zink</h3>
                 </div>
 
             </div>
@@ -903,8 +930,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
                 <!-- Resource 1: Export Logistics Guide -->
-                <div
-                    class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105" style="background-color: #2d3748;">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <img alt="Export Logistics Guide"
                         src="https://www.slideteam.net/media/catalog/product/cache/1280x720/e/x/export_logistics_powerpoint_ppt_template_bundles_slide01.jpg"
                         class="w-full h-48 object-cover">
@@ -923,14 +950,15 @@
                 </div>
 
                 <!-- Resource 2: Case Study on Successful Exports -->
-                <div
-                    class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105" style="background-color: #2d3748;">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <img alt="Case Study Image"
                         src="https://cdn2.slidemodel.com/wp-content/uploads/7750-01-medical-case-study-powerpoint-template-16x9-5.jpg"
                         class="w-full h-48 object-cover">
 
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-900"style="color: #007bff;">📈 Export Success Case Study</h3>
+                        <h3 class="text-2xl font-bold mb-2 text-gray-900" style="color: #007bff;">📈 Export Success Case
+                            Study</h3>
                         <p class="text-white leading-relaxed">
                             Learn how companies streamlined their export operations with innovative logistics strategies
                             and global networks.
@@ -943,8 +971,8 @@
                 </div>
 
                 <!-- Resource 3: Customs Clearance Handbook -->
-                <div
-                    class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105" style="background-color: #2d3748;">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-shadow hover:shadow-2xl hover:scale-105"
+                    style="background-color: #2d3748;">
                     <img alt="Customs Clearance Handbook"
                         src="https://cdn.slidesharecdn.com/ss_thumbnails/handbookoncustomsclearanceincambodia-151103170350-lva1-app6892-thumbnail-4.jpg?cb=1446570746"
                         class="w-full h-48 object-cover">
@@ -1044,19 +1072,24 @@
 
                     <!-- Social Media Links -->
                     <div class="flex items-center justify-start space-x-6 mt-6">
-                        <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                        <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-400"
+                            style="color: #007bff;">
                             <i class="fab fa-facebook-f text-5xl"></i>
                         </a>
-                        <a href="https://www.twitter.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                        <a href="https://www.twitter.com" target="_blank" class="hover:text-gray-400"
+                            style="color: #007bff;">
                             <i class="fab fa-twitter text-5xl"></i>
                         </a>
-                        <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                        <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-400"
+                            style="color: #007bff;">
                             <i class="fab fa-linkedin-in text-5xl"></i>
                         </a>
-                        <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                        <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-400"
+                            style="color: #007bff;">
                             <i class="fab fa-instagram text-5xl"></i>
                         </a>
-                        <a href="https://www.youtube.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                        <a href="https://www.youtube.com" target="_blank" class="hover:text-gray-400"
+                            style="color: #007bff;">
                             <i class="fab fa-youtube text-5xl"></i>
                         </a>
                     </div>
@@ -1084,8 +1117,7 @@
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-    >
-    
+
 
 
     <!-- Footer -->
@@ -1098,48 +1130,56 @@
     </footer>
     <!-- Offer Section -->
 
-    <div id="productModal" class="w-full fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center hidden z-50">
-        <div class="bg-white rounded-lg shadow-lg w-full h-full p-8 overflow-y-auto animate__animated animate__fadeInDown relative">
-            
+    <div id="productModal"
+        class="w-full fixed inset-0 bg-gray-900 bg-opacity-80 flex items-center justify-center hidden z-50">
+        <div
+            class="bg-white rounded-lg shadow-lg w-full h-full p-8 overflow-y-auto animate__animated animate__fadeInDown relative">
+
             <!-- Close Button -->
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-700 text-3xl font-bold hover:text-gray-900 transition">
+            <button id="closeModal"
+                class="absolute top-4 right-4 text-gray-700 text-3xl font-bold hover:text-gray-900 transition">
                 &times;
             </button>
-    
+
             <!-- Modal Title -->
             <h1 class="text-3xl font-bold mb-6 text-center text-blue-600">Explore Our Products</h1>
-    
+
             <!-- Filter Section -->
             <div class="mb-6 flex items-center space-x-4">
                 <div class="flex-1 items-right">
-                    <select id="categoryFilter" class="border-gray-300 rounded-lg shadow-sm focus:ring focus:ring-blue-300 py-2 px-4">
-                        <option value="">All Categories</option>
+                    <!-- Select Dropdown -->
+                    <select id="categoryFilter" 
+                        class="border border-blue-300 rounded-lg shadow-md focus:ring focus:ring-blue-300 py-3 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
+                        <option value="" class="text-gray-600">All Categories</option>
                         {% for category in categories %}
-                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        <option value="{{ category.id }}">{{ category.name }}</option>
                         {% endfor %}
                     </select>
-                    <button id="applyFilter" class="bg-blue-500 text-white font-bold px-5 py-2 rounded-lg shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-105">
+                </div>
+                <!-- Apply Button -->
+                <div class="flex-none">
+                    <button id="applyFilter" 
+                        class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-700 transition-transform transform hover:scale-105">
                         Apply
                     </button>
                 </div>
-    
-               
             </div>
-    
+            
+
             <!-- Product Grid -->
             <div id="modalContent" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-4">
                 <!-- Products dynamically loaded here -->
             </div>
-    
+
             <!-- Pagination -->
             <div id="pagination" class="mt-8 flex justify-center items-center space-x-4">
                 <!-- Pagination links dynamically added -->
             </div>
-    
+
         </div>
     </div>
-    
-    
+
+
     <!-- Countdown Script -->
     <script>
         function updateCountdown(endTime, elementId) {
