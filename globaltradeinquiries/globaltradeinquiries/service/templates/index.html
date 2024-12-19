@@ -165,6 +165,7 @@
             transform: translate(-50%, -50%);
             /* Perfect centering */
         }
+
         .overlay-text-statics {
             position: absolute;
             top: 70%;
@@ -655,6 +656,24 @@
                     <i class="fas fa-envelope nav-icon"></i><span class="ml-2">Contact Us</span>
                 </a>
             </div>
+            <div class="flex items-center justify-start space-x-6 mx-auto">
+                <a href="https://www.facebook.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="hover:text-gray-400" style="color: #007bff;">
+                    <i class="fab fa-youtube text-xl"></i>
+                </a>
+            </div>
+        </div>
         </div>
     </nav>
 
@@ -671,13 +690,13 @@
                 {% endfor %}
             </div>
             <div class="overlay-text">
-                    <h1 class="title text-4xl font-bold mb-2" style="color: #007bff;">
-                        Welcome to ExportBiz
-                    </h1>
-                    <p class="subtitle text-2xl mb-3" style="color: #070707;">
-                        Your trusted partner in global trade and logistics.
-                        Delivering excellence across continents with a commitment to quality and trust.
-                    </p>
+                <h1 class="title text-4xl font-bold mb-2" style="color: #007bff;">
+                    Welcome to ExportBiz
+                </h1>
+                <p class="subtitle text-2xl mb-3" style="color: #070707;">
+                    Your trusted partner in global trade and logistics.
+                    Delivering excellence across continents with a commitment to quality and trust.
+                </p>
             </div>
             <div class="overlay-text-statics stats-container">
                 <div class="stat-item">
@@ -724,13 +743,14 @@
                         <img src="{% static 'img/explore_more.webp' %}" alt="Explore More" class="w-8 h-8">
                         <span class="text-lg font-semibold">Explore Our Products</span>
                         <!-- Tooltip -->
-                        <span class="absolute bottom-full mb-2 text-sm bg-gray-800 text-white py-1 px-2 rounded opacity-0 transition-opacity group-hover:opacity-100">
+                        <span
+                            class="absolute bottom-full mb-2 text-sm bg-gray-800 text-white py-1 px-2 rounded opacity-0 transition-opacity group-hover:opacity-100">
                             Click here to see more products
                         </span>
                     </span>
                 </h2>
-                
-                
+
+
                 <div class="infinity-slider relative overflow-hidden">
                     <div class="slider-track flex gap-3 px-2 rtl">
                         {% for cat in categories %}
@@ -879,7 +899,8 @@
                     style="background-color: #2d3748;">
                     <div class="mb-4">
                         <img src="https://i.pravatar.cc/150?img=1" alt="Client 1"
-                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff";>
+                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff"
+                            ;>
                     </div>
                     <p class="text-white mb-4 leading-relaxed">
                         "ExportBiz transformed our export operations. Their seamless logistics expertise is
@@ -906,7 +927,7 @@
                     style="background-color: #2d3748;">
                     <div class="mb-4">
                         <img src="https://i.pravatar.cc/150?img=3" alt="Client 3"
-                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff"> 
+                            class="w-12 h-12 rounded-full mx-auto object-cover border-4" style="border-color: #007bff">
                     </div>
                     <p class="text-white mb-4 leading-relaxed">
                         "Their extensive global network and streamlined processes make ExportBiz our preferred export
@@ -964,7 +985,7 @@
                             and global networks.
                         </p>
                         <a href="#"
-                            class="inline-block mt-4 bg-green-500 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-green-600 transition">
+                            class="inline-block mt-10 bg-green-500 text-white font-medium py-2 px-4 rounded-lg shadow hover:bg-green-600 transition">
                             Download
                         </a>
                     </div>
@@ -1148,7 +1169,7 @@
             <div class="mb-6 flex items-center space-x-4">
                 <div class="flex-1 items-right">
                     <!-- Select Dropdown -->
-                    <select id="categoryFilter" 
+                    <select id="categoryFilter"
                         class="border border-blue-300 rounded-lg shadow-md focus:ring focus:ring-blue-300 py-3 px-4 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors">
                         <option value="" class="text-gray-600">All Categories</option>
                         {% for category in categories %}
@@ -1158,13 +1179,13 @@
                 </div>
                 <!-- Apply Button -->
                 <div class="flex-none">
-                    <button id="applyFilter" 
+                    <button id="applyFilter"
                         class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold px-6 py-3 rounded-lg shadow-lg hover:from-blue-600 hover:to-blue-700 transition-transform transform hover:scale-105">
                         Apply
                     </button>
                 </div>
             </div>
-            
+
 
             <!-- Product Grid -->
             <div id="modalContent" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-4">
